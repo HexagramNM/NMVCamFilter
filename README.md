@@ -21,23 +21,23 @@ Visual Studio 2017で開発をしておりました。
 
 1. コンパイルの際にはDirectShowのライブラリが必要です。[ここ](https://github.com/ganboing/sdk71examples)からダウンロードし、`multimedia/directshow/baseclasses`にあるコードをビルドしてください。
 
-2. `baseclasses`をコンパイル出来たら、"NMVCamFilter"プロジェクトをC++の空のプロジェクトとしてつくり、その中にこのリポジトリ内の.cppファイル、.hファイル、module.defを入れてください。
+2. `baseclasses`をコンパイル出来たら、`NMVCamFilter`プロジェクトをC++の空のプロジェクトとしてつくり、その中にこのリポジトリ内の.cppファイル、.hファイル、`module.def`を入れてください。
 
-3. "NMVCamFilter"プロジェクトのプロパティから以下のように設定してください。
-- 「全般」→「構成の種類」：ダイナミックライブラリ (.dll)
-- 「全般」→「文字セット」：Unicode文字セットを使用する
-- 「C/C++」→「全般」→「追加のインクルードディレクトリ」：`multimedia/directshow/baseclasses`フォルダの絶対パス
-- 「C/C++」→「プリプロセッサ」→「プリプロセッサの定義」：
-WIN32
-_DEBUG（Debug構成の場合。Releaseの場合はNDEBUGに変更する。）
-_WINDOWS
-_USRDLL
+3. `NMVCamFilter`プロジェクトのプロパティから以下のように設定してください。
+- **「全般」→「構成の種類」**：ダイナミックライブラリ (.dll)
+- **「全般」→「文字セット」**：Unicode文字セットを使用する
+- **「C/C++」→「全般」→「追加のインクルードディレクトリ」**：`multimedia/directshow/baseclasses`フォルダの絶対パス
+- **「C/C++」→「プリプロセッサ」→「プリプロセッサの定義」**：\
+WIN32 \
+_DEBUG（Debug構成の場合。Releaseの場合はNDEBUGに変更する。） \
+_WINDOWS \
+_USRDLL \
 MYSOURCEFILTER_EXPORTS
-- 「C/C++」→「言語」→「準拠モード」：いいえ
-- 「リンカー」→「全般」→「追加のライブラリディレクトリ」：`baseclasses`のコンパイルにより生成された`Release`または`Debug`フォルダの絶対パス。x64プラットフォームの場合は`x64/Debug`や`x64/Release`になるので注意。
-- 「リンカー」→「入力」→「モジュール定義ファイル」：`module.def`
+- **「C/C++」→「言語」→「準拠モード」**：いいえ
+- **「リンカー」→「全般」→「追加のライブラリディレクトリ」**：`baseclasses`のコンパイルにより生成された`Release`または`Debug`フォルダの絶対パス。x64プラットフォームの場合は`x64/Debug`や`x64/Release`になるので注意。
+- **「リンカー」→「入力」→「モジュール定義ファイル」**：`module.def`
 
-4. もし、プロジェクト名を"NMVCamFilter"から変更した場合は、`module.def`の`LIBRARY	"NMVCamFilter"`の部分のNMVCamFilter部分をプロジェクト名に変更してください。
+4. もし、プロジェクト名を`NMVCamFilter`から変更した場合は、`module.def`の`LIBRARY	"NMVCamFilter"`の部分のNMVCamFilter部分をプロジェクト名に変更してください。
 
 生成されたdllファイルはwindowsのSystem32もしくはSysWOW64に入っている、`regsvr32.exe`で登録することで使えるようになります。
 
