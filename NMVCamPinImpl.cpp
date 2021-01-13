@@ -154,7 +154,7 @@ HRESULT NMVCamPin::GetStreamCaps(
 	pvscc->MinFrameInterval = 200000; //50fps
 	pvscc->MaxFrameInterval = 50000000; //0.2fps
 	pvscc->MinBitsPerSecond = (WINDOW_WIDTH * WINDOW_HEIGHT * PIXEL_BIT) / 5;
-	pvscc->MinBitsPerSecond = (WINDOW_WIDTH * WINDOW_HEIGHT * PIXEL_BIT) * 50;
+	pvscc->MaxBitsPerSecond = (WINDOW_WIDTH * WINDOW_HEIGHT * PIXEL_BIT) * 50;
 
 	return S_OK;
 }
